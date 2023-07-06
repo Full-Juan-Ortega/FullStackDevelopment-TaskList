@@ -1,0 +1,39 @@
+<div class="m-5">
+  <h3>Formulario 2</h3>
+
+  <div class="col-4 mb-3">
+    <form action="" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <label for="name" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control mb-3"
+        aria-describedby="emailHelpId"
+        placeholder="abc@mail.com"
+        formControlName="email"
+        name="email"
+        id="email"
+      />
+      <div
+        *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']"
+        class="alert alert-danger"
+      >
+        This field is required
+      </div>
+
+      <!-- validaciones -->
+      <div
+        *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['minlength']"
+        class="alert alert-danger"
+      >
+        Minimium characters invalid , must be greater than
+        {{contactForm.get('email')?.errors?.['minlength'].requiredLength}}
+      </div>
+
+      <button class="m-3" type="submit" class="btn btn-primary">Button</button>
+    </form>
+  </div>
+  <div class="container">
+    <h3>Resultado : {{ CompVista }}</h3>
+    <h3>Resultado : {{ contactForm.value.email }}</h3>
+  </div>
+</div>

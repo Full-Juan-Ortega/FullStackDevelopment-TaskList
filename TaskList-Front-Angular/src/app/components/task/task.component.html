@@ -1,0 +1,106 @@
+<div class="row">
+  <h1>Manage your Tasklist!</h1>
+</div>
+<div name="moveTop" class="row pt-4">
+  <div class="col-md-4">
+    <h2>{{ taskInEdit ? "Edit" : "New" }}</h2>
+    <form class="mt-3" [formGroup]="form" (ngSubmit)="saveOrUpdate()">
+      <div class="mb-2">
+        <div class="col">
+          <label class="form-label" for="name">Insert task name : </label>
+          <input
+            type="text"
+            placeholder="insert task"
+            class="form-control"
+            formControlName="name"
+            id="name"
+          />
+        </div>
+        <div class="col mt-2">
+          <label class="form-label" for="details">Details : </label>
+          <input
+            type="text"
+            placeholder="insert details"
+            class="form-control"
+            formControlName="details"
+            id="details"
+          />
+        </div>
+      </div>
+      <div class="mt-3 mb-3 form-check">
+        <label>
+          <input
+            type="checkbox"
+            class="form-check-input"
+            formControlName="state"
+          />
+          Done
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        {{ taskInEdit ? "Edit" : "New" }}
+      </button>
+    </form>
+  </div>
+
+  <!-- FORM -->
+
+  <div class="col-md-8">
+    <h1>My tasklist</h1>
+    <table class="table table-hover mt-4">
+      <thead>
+        <tr>
+          <th scope="col">Task</th>
+          <th scope="col">Details</th>
+          <th scope="col">Done</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <td>{{ task.name }}</td>
+          <td>{{ task.details }}</td>
+          <td>
+            <span *ngIf="task.state; else taskIncomplete">Yes</span>
+            <ng-template #taskIncomplete>No </ng-template>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-outline-danger btn-sm m-1"
+              (click)="delete(task.id_task)"
+            >
+              Delete
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-outline-success btn-sm m-1"
+              (click)="setForm(task)"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- <form [formGroup]="form" (ngSubmit)="save()">
+  <label>
+    Name:
+    <input type="text" formControlName="name" />
+  </label>
+  <label>
+    Email:
+    <input type="email" formControlName="email" />
+  </label>
+  <button type="submit">Submit</button>
+</form> -->
+
+<!-- MEJORAS
+*Que el check de completado vuelva a estado falso.
+
+ -->

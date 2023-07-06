@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/jwt-spring-boot-3.0.2-master/jwt-spring-boot-3.0.2-master/TaskList.iml" filepath="$PROJECT_DIR$/jwt-spring-boot-3.0.2-master/jwt-spring-boot-3.0.2-master/TaskList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/TaskList-BackEnd.iml" filepath="$PROJECT_DIR$/.idea/TaskList-BackEnd.iml" />
+    </modules>
+  </component>
+</project>

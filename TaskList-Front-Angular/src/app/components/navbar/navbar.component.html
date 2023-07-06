@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand font-monospace" href="#">TaskList</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collsapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link active" routerLink="/login" aria-current="page"
+            >Account</a
+          >
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link active" routerLink="/probando" aria-current="page"
+            >Probar
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [ngClass]="{ active: logIn$ | async, disabled: !logIn$ }"
+            routerLink="/task"
+            >Task Options : {{ x | async }}</a
+          >
+        </li>
+      </ul>
+      <button
+        class="btn btn-outline-light"
+        [ngClass]="{ active: logIn$ | async, disabled: !logIn$ }"
+        (click)="logOut()"
+      >
+        Log Out
+      </button>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,46 @@
+<div class="row">
+  <h1 class="">Account</h1>
+</div>
+<div class="container col-10 col-md-6">
+  <div class="row">
+    <div class="text-center">
+      <h3>Register</h3>
+      <a routerLink="/login" class="badge bg-info m-1"
+        >If you are registered go to Login</a
+      >
+    </div>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="register()">
+    <div class="mb-2">
+      <label for="" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        name=""
+        id="a"
+        aria-describedby="emailHelpId"
+        placeholder="abc@mail.com"
+        formControlName="email"
+      />
+      <small id="emailHelpId" class="form-text text-muted"
+        >Aditional text</small
+      >
+    </div>
+
+    <div class="">
+      <label for="" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name=""
+        id=""
+        placeholder=""
+        formControlName="password"
+      />
+    </div>
+    <div class="mb-2">
+      <a href="http://">Recover password</a>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>
