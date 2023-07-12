@@ -11,32 +11,51 @@
     </div>
   </div>
   <form [formGroup]="form" (ngSubmit)="register()">
-    <div class="mb-2">
-      <label for="" class="form-label">Email</label>
+    <div class="form-group mb-3">
+      <label>Email : </label>
       <input
         type="email"
-        class="form-control"
-        name=""
-        id="a"
-        aria-describedby="emailHelpId"
-        placeholder="abc@mail.com"
         formControlName="email"
+        class="form-control"
+        maxlength="30"
       />
-      <small id="emailHelpId" class="form-text text-muted"
-        >Aditional text</small
+      <div
+        *ngIf="
+          form.get('email')?.invalid &&
+          (form.get('email')?.dirty || form.get('email')?.touched)
+        "
+        class="alert alert-sm alert-danger"
       >
+        <div *ngIf="form.get('email')?.errors?.['required']">
+          Email is required.
+        </div>
+        <div *ngIf="form.get('email')?.errors?.['email']">
+          Please enter a valid email address.
+        </div>
+      </div>
     </div>
-
-    <div class="">
-      <label for="" class="form-label">Password</label>
+    <div class="form-group mb-3">
+      <label>Password : </label>
       <input
         type="password"
-        class="form-control"
-        name=""
-        id=""
-        placeholder=""
         formControlName="password"
+        class="form-control"
+        maxlength="10"
       />
+      <div
+        *ngIf="
+          form.get('password')?.invalid &&
+          (form.get('password')?.dirty || form.get('password')?.touched)
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="form.get('password')?.errors?.['required']">
+          Password is required.
+        </div>
+        <div *ngIf="form.get('password')?.errors?.['minlength']">
+          Password must be at least 6 characters long.
+        </div>
+      </div>
     </div>
     <div class="mb-2">
       <a href="http://">Recover password</a>
