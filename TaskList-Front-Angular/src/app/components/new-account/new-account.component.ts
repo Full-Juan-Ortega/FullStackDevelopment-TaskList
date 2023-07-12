@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UsuarioLoginDTO } from 'src/app/service/mock';
@@ -18,39 +18,45 @@ export class NewAccountComponent {
   ) {}
 
   form: FormGroup = this.fb.group({
-    email: [],
-    password: [false],
-    rol: 'USUARIO_RESTRINGIDO',
+    email: ['', [Validators.required, Validators.email]],
+    password: [
+      false,
+      [Validators.required, Validators.maxLength(10), Validators.minLength(4)],
+    ],
+    rol: ['USUARIO_RESTRINGIDO'],
   });
 
   ngOnInit() {}
 
   register() {
-    let userLoginDTO: UsuarioLoginDTO = new UsuarioLoginDTO();
-    userLoginDTO.nombreUsuario = this.form.value.email;
-    userLoginDTO.clave = this.form.value.password;
-    userLoginDTO.rol = this.form.value.rol;
+    if (this.form.valid) {
+      let userLoginDTO: UsuarioLoginDTO = new UsuarioLoginDTO();
+      userLoginDTO.nombreUsuario = this.form.value.email;
+      userLoginDTO.clave = this.form.value.password;
+      userLoginDTO.rol = this.form.value.rol;
 
-    this.registrarseService.register(userLoginDTO).subscribe({
-      next: (response) => {
-        console.log('usuario del back : ', userLoginDTO);
-        console.log('RESPUESTA del back : ', response);
-      },
-      error: (err) => {
-        console.log('Error en el Registro : ', err);
-      },
-      complete: () => {
-        this.router.navigate(['/login']);
-      },
-    });
+      this.registrarseService.register(userLoginDTO).subscribe({
+        next: (response) => {
+          console.log('usuario del back : ', userLoginDTO);
+          console.log('RESPUESTA del back : ', response);
+        },
+        error: (err) => {
+          console.log('Error en el Registro : ', err);
+        },
+        complete: () => {
+          alert('Registro exitoso');
+          this.router.navigate(['/login']);
+        },
+      });
+    }
   }
 
   test() {
     console.log('tira');
-    this.registrarseService.testFunctionService().subscribe({
-      next: (response) => {
-        console.log('respuesta del back ', response);
-      },
-    });
+    if (this.form.valid) {
+      alert('success');
+    } else {
+      alert('invalid');
+    }
   }
 }

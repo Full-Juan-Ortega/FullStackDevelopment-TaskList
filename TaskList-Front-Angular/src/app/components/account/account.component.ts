@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Usuario, UsuarioLoginDTO } from 'src/app/service/mock';
@@ -19,8 +19,11 @@ export class AccountComponent {
   ) {}
 
   form: FormGroup = this.fb.group({
-    email: [],
-    password: [false],
+    email: ['', [Validators.required, Validators.email]],
+    password: [
+      false,
+      [Validators.required, Validators.maxLength(10), Validators.minLength(4)],
+    ],
   });
 
   ngOnInit() {}
@@ -43,6 +46,7 @@ export class AccountComponent {
         this.cookiesService.set('token', JSON.stringify(usuarioLoginDTO.token));
       },
       error: (err) => {
+        alert('Error en el login');
         console.log('Error en el Login : ', err);
       },
       complete: () => {
