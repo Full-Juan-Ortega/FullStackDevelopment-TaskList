@@ -1,0 +1,9 @@
+.nav-item:hover {
+  transform: scale(1.05);
+  border-bottom: 1px solid black;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  color: black;
+}

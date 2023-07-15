@@ -6,6 +6,7 @@ import { UserGuardGuard } from './service/security/user-guard.guard';
 import { HomeComponent } from './components/home/home.component';
 import { NewAccountComponent } from './components/new-account/new-account.component';
 import { ProbandoBindingsComponent } from './components/probando-bindings/probando-bindings.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: AccountComponent },
   { path: 'register', component: NewAccountComponent },
   { path: 'probando', component: ProbandoBindingsComponent },
+  { path: 'contact', component: ContactComponent },
   { path: 'task', component: TaskComponent, canActivate: [UserGuardGuard] },
 ];
 

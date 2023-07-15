@@ -16,6 +16,7 @@ import { NewAccountComponent } from './components/new-account/new-account.compon
 import { AccountComponent } from './components/account/account.component';
 import { ProbandoBindingsComponent } from './components/probando-bindings/probando-bindings.component';
 import { BindingsServiceService } from './components/probando-bindings/bindings-service.service';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { BindingsServiceService } from './components/probando-bindings/bindings-
     FooterComponent,
     NewAccountComponent,
     ProbandoBindingsComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

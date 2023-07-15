@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand font-monospace" href="#">TaskList</a>
+    <img src="../../../assets/tasklist-icon-final.png" alt="" width="35" />
+    <div class="col justify-content-start mx-2">
+      <a class="navbar-brand font-monospace" href="#">TaskList</a>
+    </div>
+
     <button
       class="navbar-toggler"
       type="button"
@@ -13,7 +17,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
@@ -23,8 +27,8 @@
           >
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link active" routerLink="/probando" aria-current="page"
-            >Probar
+          <a class="nav-link active" routerLink="/contact" aria-current="page"
+            >Contact
           </a>
         </li>
         <li class="nav-item">
@@ -36,13 +40,16 @@
           >
         </li>
       </ul>
-      <button
-        class="btn btn-outline-light"
-        [ngClass]="{ active: logIn$ | async, disabled: !logIn$ }"
-        (click)="logOut()"
-      >
-        Log Out
-      </button>
+
+      <div class="">
+        <button
+          class="btn btn-outline-light"
+          [ngClass]="{ active: logIn$ | async, disabled: !logIn$ }"
+          (click)="logOut()"
+        >
+          Log Out
+        </button>
+      </div>
     </div>
   </div>
 </nav>
