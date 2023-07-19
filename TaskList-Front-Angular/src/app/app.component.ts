@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OnClickNavbarCollapseService } from './service/on-click-navbar-collapse.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'taskList';
+
+  constructor(private navbarCollapse: OnClickNavbarCollapseService) {}
+
+  collapseNavbar() {
+    this.navbarCollapse.collapseNavbar();
+  }
 }

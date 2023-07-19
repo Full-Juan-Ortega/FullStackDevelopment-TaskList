@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <img src="../../../assets/tasklist-icon-final.png" alt="" width="35" />
     <div class="col justify-content-start mx-2">
-      <a class="navbar-brand font-monospace" href="#">TaskList</a>
+      <a class="navbar-brand font-monospace" routerLink="/home">TaskList</a>
     </div>
 
     <button
@@ -16,24 +16,40 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-collapse collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link active" routerLink="/login" aria-current="page"
-            >Account</a
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/home"
+            (click)="collapseNavbar()"
+            >Home</a
           >
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link active" routerLink="/contact" aria-current="page"
+          <a
+            class="nav-link active"
+            routerLink="/login"
+            aria-current="page"
+            (click)="collapseNavbar()"
+          >
+            Account</a
+          >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link active"
+            routerLink="/contact"
+            aria-current="page"
+            (click)="collapseNavbar()"
             >Contact
           </a>
         </li>
         <li class="nav-item">
           <a
             class="nav-link"
+            (click)="collapseNavbar()"
             [ngClass]="{ active: logIn$ | async, disabled: !logIn$ }"
             routerLink="/task"
             >Task Options : {{ x | async }}</a
@@ -45,6 +61,7 @@
         <button
           class="btn btn-outline-light"
           [ngClass]="{ active: logIn$ | async, disabled: !logIn$ }"
+          (click)="collapseNavbar()"
           (click)="logOut()"
         >
           Log Out

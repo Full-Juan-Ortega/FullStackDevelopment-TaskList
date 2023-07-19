@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+import { OnClickNavbarCollapseService } from 'src/app/service/on-click-navbar-collapse.service';
 import { RegistrarseServiceService } from 'src/app/service/registrarse-service.service';
 
 @Component({
@@ -14,11 +12,18 @@ export class NavbarComponent {
   x: any;
   logIn$: Observable<boolean>;
 
-  constructor(private registrarseService: RegistrarseServiceService) {
+  constructor(
+    private registrarseService: RegistrarseServiceService,
+    private onClickNavbarCollapseService: OnClickNavbarCollapseService
+  ) {
     this.logIn$ = this.registrarseService.getRegisterComplete();
   }
 
   logOut() {
     this.registrarseService.logOut();
+  }
+
+  collapseNavbar() {
+    this.onClickNavbarCollapseService.collapseNavbar();
   }
 }

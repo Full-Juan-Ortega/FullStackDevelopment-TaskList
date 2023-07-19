@@ -10,7 +10,7 @@ import { ContactComponent } from './components/contact/contact.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'login', component: AccountComponent },
   { path: 'register', component: NewAccountComponent },
   { path: 'probando', component: ProbandoBindingsComponent },
