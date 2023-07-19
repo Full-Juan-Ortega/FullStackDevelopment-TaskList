@@ -1,0 +1,18 @@
+.nav-item:hover {
+  transform: scale(1.05);
+  border-bottom: 1px solid darkgray;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  color: darkgray;
+}
+
+.navPosition {
+  margin-top: 100%;
+}
+
+.fontControl {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}

@@ -1,0 +1,22 @@
+a {
+  font-size: 80%;
+}
+
+i {
+  font-size: x-large;
+}
+
+.nav-item:hover,
+.nav-link:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+
+.lineDiv {
+  height: 1px;
+  box-shadow: 1px 1px 1px 1px black;
+}
+
+.colEdit {
+  height: 40px;
+}
