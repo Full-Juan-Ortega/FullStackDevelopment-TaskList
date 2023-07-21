@@ -1,6 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
   <div class="container-fluid">
-    <img src="../../../assets/tasklist-icon-final.png" alt="" width="35" />
+    <img
+      class="ms-3"
+      src="../../../assets/tasklist-icon-final.png"
+      alt=""
+      width="35"
+    />
     <div class="col justify-content-start mx-2">
       <a class="navbar-brand font-monospace" routerLink="/home">TaskList</a>
     </div>
@@ -52,21 +57,19 @@
             (click)="collapseNavbar()"
             [ngClass]="{ active: logIn$ | async, disabled: !logIn$ }"
             routerLink="/task"
-            >Task Options : {{ x | async }}</a
+            >Task Options{{ x | async }}</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [ngClass]="{ active: logIn$ | async, disabled: !logIn$ }"
+            (click)="collapseNavbar()"
+            (click)="logOut()"
+            ><i class="bi bi-person mx-1 text-black"></i>Log Out</a
           >
         </li>
       </ul>
-
-      <div class="">
-        <button
-          class="btn btn-outline-light"
-          [ngClass]="{ active: logIn$ | async, disabled: !logIn$ }"
-          (click)="collapseNavbar()"
-          (click)="logOut()"
-        >
-          Log Out
-        </button>
-      </div>
     </div>
   </div>
 </nav>

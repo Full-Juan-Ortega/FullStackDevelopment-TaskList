@@ -2,8 +2,8 @@
   <h1>Manage your Tasklist!</h1>
 </div>
 <div name="moveTop" class="row pt-4">
-  <div class="col-md-4">
-    <h2>{{ taskInEdit ? "Edit" : "New" }}</h2>
+  <div class="col-md-4 mb-4">
+    <h1>{{ taskInEdit ? "Edit" : "New" }}</h1>
     <form class="mt-3" [formGroup]="form" (ngSubmit)="saveOrUpdate()">
       <div class="mb-2">
         <div class="col">
@@ -45,62 +45,47 @@
 
   <!-- FORM -->
 
-  <div class="col-md-8">
-    <h1>My tasklist</h1>
-    <table class="table table-hover mt-4">
-      <thead>
-        <tr>
-          <th scope="col">Task</th>
-          <th scope="col">Details</th>
-          <th scope="col">Done</th>
-          <th scope="col">Options</th>
-        </tr>
-      </thead>
+  <div class="col-md-8 ms-0 ps-0">
+    <div class="row m-auto"><h1>My tasklist</h1></div>
+    <div class="col">
+      <table class="table table-hover mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Task</th>
+            <th scope="col">Details</th>
+            <th scope="col">Done</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <tr *ngFor="let task of tasks">
-          <td>{{ task.name }}</td>
-          <td>{{ task.details }}</td>
-          <td>
-            <span *ngIf="task.state; else taskIncomplete">Yes</span>
-            <ng-template #taskIncomplete>No </ng-template>
-          </td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-outline-danger btn-sm m-1"
-              (click)="delete(task.id_task)"
-            >
-              Delete
-            </button>
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <td>{{ task.name }}</td>
+            <td>{{ task.details }}</td>
+            <td>
+              <span *ngIf="task.state; else taskIncomplete">Yes</span>
+              <ng-template #taskIncomplete>No </ng-template>
+            </td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-outline-danger btn-sm m-1"
+                (click)="delete(task.id_task)"
+              >
+                Delete
+              </button>
 
-            <button
-              type="button"
-              class="btn btn-outline-success btn-sm m-1"
-              (click)="setForm(task)"
-            >
-              Update
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+              <button
+                type="button"
+                class="btn btn-outline-success btn-sm m-1"
+                (click)="setForm(task)"
+              >
+                Update
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
-
-<!-- <form [formGroup]="form" (ngSubmit)="save()">
-  <label>
-    Name:
-    <input type="text" formControlName="name" />
-  </label>
-  <label>
-    Email:
-    <input type="email" formControlName="email" />
-  </label>
-  <button type="submit">Submit</button>
-</form> -->
-
-<!-- MEJORAS
-*Que el check de completado vuelva a estado falso.
-
- -->
