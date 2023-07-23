@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 import { UsuarioLoginDTO } from 'src/app/service/mock';
 import { RegistrarseServiceService } from 'src/app/service/registrarse-service.service';
@@ -14,14 +15,23 @@ export class NewAccountComponent {
   constructor(
     private registrarseService: RegistrarseServiceService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) {}
 
   form: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: [
+      '',
+      [
+        Validators.required,
+        Validators.email,
+        Validators.maxLength(50),
+        Validators.minLength(6),
+      ],
+    ],
     password: [
       false,
-      [Validators.required, Validators.maxLength(10), Validators.minLength(6)],
+      [Validators.required, Validators.maxLength(50), Validators.minLength(6)],
     ],
     rol: ['USUARIO_RESTRINGIDO'],
   });
@@ -39,17 +49,27 @@ export class NewAccountComponent {
         next: (response) => {
           console.log('usuario del back : ', userLoginDTO);
           console.log('RESPUESTA del back : ', response);
+          let usuarioLoginDTO: any = response;
+          this.registrarseService.setRegisterComplete(true);
+          localStorage.setItem(
+            'usuarioLoginDTO',
+            JSON.stringify(usuarioLoginDTO)
+          );
+          this.cookieService.set(
+            'usuarioLoginDTO',
+            JSON.stringify(usuarioLoginDTO)
+          );
         },
         error: (err) => {
           console.log(
-            'Error en el Registro, ya se encuentra registrado : ',
+            'Register error , your email is already registered : ',
             err
           );
           alert('Register error , your email is already registered');
         },
         complete: () => {
           alert('Registro exitoso');
-          this.router.navigate(['/task']);
+          this.router.navigate(['/login']);
         },
       });
     }

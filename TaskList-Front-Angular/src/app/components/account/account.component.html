@@ -25,6 +25,9 @@
         <div *ngIf="form.get('email')?.errors?.['email']">
           Please enter a valid email address.
         </div>
+        <div *ngIf="form.get('email')?.errors?.['maxlength']">
+          Email must not exceed 50 characters long.
+        </div>
       </div>
     </div>
     <div class="form-group mb-3">
@@ -47,6 +50,9 @@
         </div>
         <div *ngIf="form.get('password')?.errors?.['minlength']">
           Password must be at least 6 characters long.
+        </div>
+        <div *ngIf="form.get('password')?.errors?.['maxlength']">
+          Password must not exceed 50 characters long.
         </div>
       </div>
     </div>
