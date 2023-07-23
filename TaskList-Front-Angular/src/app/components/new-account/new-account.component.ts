@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+
 import { UsuarioLoginDTO } from 'src/app/service/mock';
 import { RegistrarseServiceService } from 'src/app/service/registrarse-service.service';
 
@@ -21,7 +21,7 @@ export class NewAccountComponent {
     email: ['', [Validators.required, Validators.email]],
     password: [
       false,
-      [Validators.required, Validators.maxLength(10), Validators.minLength(4)],
+      [Validators.required, Validators.maxLength(10), Validators.minLength(6)],
     ],
     rol: ['USUARIO_RESTRINGIDO'],
   });
@@ -41,11 +41,15 @@ export class NewAccountComponent {
           console.log('RESPUESTA del back : ', response);
         },
         error: (err) => {
-          console.log('Error en el Registro : ', err);
+          console.log(
+            'Error en el Registro, ya se encuentra registrado : ',
+            err
+          );
+          alert('Register error , your email is already registered');
         },
         complete: () => {
           alert('Registro exitoso');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/task']);
         },
       });
     }

@@ -60,6 +60,8 @@
     <div class="mb-2">
       <a href="http://">Recover password</a>
     </div>
-    <button type="submit" class="btn btn-primary">Register</button>
+    <button [disabled]="!form.valid" type="submit" class="btn btn-primary">
+      Register
+    </button>
   </form>
 </div>

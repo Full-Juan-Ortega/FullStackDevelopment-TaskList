@@ -19,10 +19,18 @@ export class AccountComponent {
   ) {}
 
   form: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: [
+      '',
+      [
+        Validators.required,
+        Validators.email,
+        Validators.maxLength(25),
+        Validators.minLength(6),
+      ],
+    ],
     password: [
       false,
-      [Validators.required, Validators.maxLength(10), Validators.minLength(4)],
+      [Validators.required, Validators.maxLength(10), Validators.minLength(6)],
     ],
   });
 

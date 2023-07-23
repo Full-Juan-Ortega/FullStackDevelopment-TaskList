@@ -53,6 +53,8 @@
     <div class="mb-2">
       <a href="http://">Recover password</a>
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button [disabled]="!form.valid" type="submit" class="btn btn-primary">
+      Login
+    </button>
   </form>
 </div>

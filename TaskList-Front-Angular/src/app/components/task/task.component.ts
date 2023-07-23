@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TaskMock } from 'src/app/service/task-mock';
 import { TaskServiceService } from 'src/app/service/task-service.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,18 +14,26 @@ export class TaskComponent {
   tasks: any;
   taskModel!: TaskMock;
   taskInEdit: any = '';
-
-  form: FormGroup = this.fb.group({
-    id_task: '',
-    name: [],
-    details: [],
-    state: [false],
-  });
+  form: FormGroup;
 
   constructor(
     private taskService: TaskServiceService,
     private fb: FormBuilder
-  ) {}
+  ) {
+    this.form = this.fb.group({
+      id_task: '',
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(25),
+          Validators.minLength(4),
+        ],
+      ],
+      details: ['', [Validators.required]],
+      state: [false],
+    });
+  }
 
   ngOnInit() {
     this.getAll();

@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { BindingsServiceService } from './bindings-service.service';
-import { Observable, from } from 'rxjs';
-import { RegistrarseServiceService } from 'src/app/service/registrarse-service.service';
 
 @Component({
   selector: 'app-probando-bindings',
@@ -9,14 +6,12 @@ import { RegistrarseServiceService } from 'src/app/service/registrarse-service.s
   styleUrls: ['./probando-bindings.component.css'],
 })
 export class ProbandoBindingsComponent {
-  data$: Observable<string>;
-  log$: Observable<boolean>;
+  myModal = document.getElementById('myModal');
+  myInput = document.getElementById('myInput');
 
-  constructor(
-    private bindingsService: BindingsServiceService,
-    private registrarseService: RegistrarseServiceService
-  ) {
-    this.log$ = registrarseService.getRegisterComplete();
-    this.data$ = bindingsService.getPersonaInfoObs();
+  constructor() {}
+
+  showAlerts() {
+    alert('que carajo');
   }
 }

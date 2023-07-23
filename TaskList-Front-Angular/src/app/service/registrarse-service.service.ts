@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class RegistrarseServiceService {
-  private logInObs$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
+  private logInObs$: BehaviorSubject<any> = new BehaviorSubject<any>(
+    localStorage.getItem('usuarioLoginDTO')
   );
 
   constructor(
