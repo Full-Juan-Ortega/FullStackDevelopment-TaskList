@@ -24,13 +24,13 @@ export class AccountComponent {
       [
         Validators.required,
         Validators.email,
-        Validators.maxLength(25),
+        Validators.maxLength(50),
         Validators.minLength(6),
       ],
     ],
     password: [
       false,
-      [Validators.required, Validators.maxLength(10), Validators.minLength(6)],
+      [Validators.required, Validators.maxLength(50), Validators.minLength(6)],
     ],
   });
 
