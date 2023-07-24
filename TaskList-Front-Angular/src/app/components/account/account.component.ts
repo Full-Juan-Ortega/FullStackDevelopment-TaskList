@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Usuario, UsuarioLoginDTO } from 'src/app/service/mock';
 import { RegistrarseServiceService } from 'src/app/service/registrarse-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-account',
@@ -54,7 +55,12 @@ export class AccountComponent {
         this.cookiesService.set('token', JSON.stringify(usuarioLoginDTO.token));
       },
       error: (err) => {
-        alert('Error en el login');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login error , did you finish the register?!',
+          confirmButtonColor: '#0dcaf0',
+        });
         console.log('Error en el Login : ', err);
       },
       complete: () => {
