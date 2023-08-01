@@ -12,6 +12,7 @@ export class RegistrarseServiceService {
   private logInObs$: BehaviorSubject<any> = new BehaviorSubject<any>(
     localStorage.getItem('usuarioLoginDTO')
   );
+  x: any;
 
   constructor(
     private http: HttpClient,
@@ -49,12 +50,21 @@ export class RegistrarseServiceService {
     return this.http.post('http://localhost:8080/usuario/crear', userRegistro);
   }
 
-  setRegisterComplete(logIn: boolean) {
-    return this.logInObs$.next(logIn);
+  setRegisterComplete(logIn: any) {
+    this.logInObs$.next(logIn);
   }
 
   getRegisterComplete() {
     return this.logInObs$.asObservable();
+  }
+
+  getUsuarioInfo(propiedad: any) {
+    let x = localStorage.getItem('usuarioLoginDTO');
+
+    if (x) x = JSON.parse(x);
+    let x2: any = x;
+    console.log('Retorno de GetUsuario : ', x2[propiedad.valueOf()]);
+    return x2[propiedad.valueOf()];
   }
 
   logOut() {

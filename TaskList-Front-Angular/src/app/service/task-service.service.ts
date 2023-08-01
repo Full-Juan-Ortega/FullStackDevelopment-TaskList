@@ -21,7 +21,8 @@ export class TaskServiceService {
 
   getAll() {
     return this.http.get(
-      'http://localhost:8080/task/all2/' + this.getUsuarioInfo('id')
+      'http://localhost:8080/task/all2/' +
+        this.registrarseService.getUsuarioInfo('id')
     );
   }
 
@@ -39,15 +40,5 @@ export class TaskServiceService {
 
   delete(id: any) {
     return this.http.delete('http://localhost:8080/task/delete/' + id);
-  }
-
-  getUsuarioInfo(propiedad: any) {
-    let x = localStorage.getItem('usuarioLoginDTO');
-
-    if (x) x = JSON.parse(x);
-    let x2: any = x;
-    console.log('obj : ', x2);
-    console.log('Retorno de GetUsuario : ', x2[propiedad.valueOf()]);
-    return x2[propiedad.valueOf()];
   }
 }

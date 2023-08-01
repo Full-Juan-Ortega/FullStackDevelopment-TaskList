@@ -66,8 +66,19 @@
             (click)="collapseNavbar()"
             (click)="logOut()"
             [ngClass]="{ active: logIn$ | async, disabled: !logIn$ }"
-            ><i class="bi bi-person mx-1"></i>Log Out</a
           >
+            <i class="bi bi-person mx-1"></i>Log Out</a
+          >
+        </li>
+        <li class="nav-item ms-lg-5">
+          <a
+            class="nav-link"
+            (click)="collapseNavbar()"
+            (click)="logOut()"
+            [ngClass]="{ active: logIn$ | async, disabled: !logIn$ }"
+          >
+            <span *ngIf="logIn$ | async">User : {{ emailStatus }}</span>
+          </a>
         </li>
       </ul>
     </div>

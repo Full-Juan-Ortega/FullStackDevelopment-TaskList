@@ -10,13 +10,26 @@ import { RegistrarseServiceService } from 'src/app/service/registrarse-service.s
 })
 export class NavbarComponent {
   x: any;
-  logIn$: Observable<boolean>;
+  logIn$: Observable<any>;
+
+  emailStatus: any;
 
   constructor(
     private registrarseService: RegistrarseServiceService,
     private onClickNavbarCollapseService: OnClickNavbarCollapseService
   ) {
     this.logIn$ = this.registrarseService.getRegisterComplete();
+  }
+
+  ngOnInit() {
+    {
+      this.logIn$.subscribe((response) => {
+        console.log('ver', response);
+        if (response)
+          this.emailStatus =
+            this.registrarseService.getUsuarioInfo('nombreUsuario');
+      });
+    }
   }
 
   logOut() {

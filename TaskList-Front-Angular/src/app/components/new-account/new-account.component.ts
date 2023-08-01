@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-
+import Swal from 'sweetalert2';
 import { UsuarioLoginDTO } from 'src/app/service/mock';
 import { RegistrarseServiceService } from 'src/app/service/registrarse-service.service';
 
@@ -65,10 +65,19 @@ export class NewAccountComponent {
             'Register error , your email is already registered : ',
             err
           );
-          alert('Register error , your email is already registered');
+          Swal.fire({
+            icon: 'question',
+            title: 'Oops...',
+            text: 'Register error , your email is already registered!',
+            confirmButtonColor: '#0dcaf0',
+          });
         },
         complete: () => {
-          alert('Registro exitoso');
+          Swal.fire({
+            icon: 'success',
+            title: 'Register sucessful',
+            text: ' Great , now you can login!',
+          });
           this.router.navigate(['/login']);
         },
       });
