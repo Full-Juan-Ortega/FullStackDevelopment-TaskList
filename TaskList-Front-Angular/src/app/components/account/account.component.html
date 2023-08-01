@@ -28,6 +28,9 @@
         <div *ngIf="form.get('email')?.errors?.['maxlength']">
           Email must not exceed 50 characters long.
         </div>
+        <div *ngIf="form.get('email')?.errors?.['minlength']">
+          Email must be at least 6 characters long.
+        </div>
       </div>
     </div>
     <div class="form-group mb-3">
